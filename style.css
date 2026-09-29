@@ -1,164 +1,588 @@
-/* =========================================
-   GET ELEMENTS
-========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-const welcomeScreen = document.getElementById("welcomeScreen");
-const teaseScreen = document.getElementById("teaseScreen");
-const surpriseScreen = document.getElementById("surpriseScreen");
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
 
-const startBtn = document.getElementById("startBtn");
-const teaseBtn = document.getElementById("teaseBtn");
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
 
-const teaseTitle = document.getElementById("teaseTitle");
-const teaseText = document.getElementById("teaseText");
-const teaseEmoji = document.getElementById("teaseEmoji");
+    background:
+        radial-gradient(circle at 20% 20%, #ffd6ec 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #d9c7ff 0%, transparent 30%),
+        linear-gradient(135deg, #ffd8e8, #e9d5ff);
 
-const counter = document.getElementById("counter");
-
-let clickCount = 0;
-
-
-/* =========================================
-   START BUTTON
-========================================= */
-
-startBtn.addEventListener("click", function () {
-
-    welcomeScreen.classList.remove("active");
-
-    teaseScreen.classList.add("active");
-
-});
+    color: #4a2940;
+}
 
 
 /* =========================================
-   TEASING BUTTON
+   SCREEN SYSTEM
 ========================================= */
 
-teaseBtn.addEventListener("click", function () {
+.screen {
+    position: fixed;
 
-    clickCount++;
+    inset: 0;
 
-    counter.innerText = clickCount + " / 4";
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    z-index: 10;
+}
 
 
-    /* FIRST CLICK */
+/* ONLY THE CURRENT SCREEN IS VISIBLE */
 
-    if (clickCount === 1) {
+.screen.active {
+    display: flex;
+}
 
-        teaseEmoji.innerText = "😏";
 
-        teaseTitle.innerText = "Ohooo... 👀";
+/* =========================================
+   GLASS CARD
+========================================= */
 
-        teaseText.innerText =
-            "Itni jaldi surprise chahiye? Thoda wait karo madam 😂";
+.card {
+    width: min(90vw, 500px);
 
-        teaseBtn.innerText =
-            "Okay okay... Click again 😭";
+    padding: 45px 30px;
 
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.60);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 20px 60px rgba(100, 40, 100, 0.20);
+
+    animation: cardAppear 0.8s ease;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
     }
 
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
 
-    /* SECOND CLICK */
 
-    else if (clickCount === 2) {
+/* =========================================
+   FIRST SCREEN
+========================================= */
 
-        teaseEmoji.innerText = "😂";
+.sparkles {
+    font-size: 25px;
+    margin-bottom: 15px;
 
-        teaseTitle.innerText =
-            "Patience Ishhhhhhh!";
+    animation: sparkle 1.5s infinite;
+}
 
-        teaseText.innerText =
-            "Abhi toh surprise shuru bhi nahi hua 😭✨";
 
-        teaseBtn.innerText =
-            "One more time 👀";
+@keyframes sparkle {
 
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+
+h1 {
+    font-size: clamp(40px, 8vw, 65px);
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        45deg,
+        #d63384,
+        #8e44ad,
+        #ff4f91
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.small-text {
+    font-size: 16px;
+
+    margin-bottom: 30px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+    border: none;
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #ff4f91,
+        #b84cff
+    );
+
+    box-shadow:
+        0 10px 25px rgba(190, 65, 150, 0.30);
+
+    transition: 0.3s ease;
+}
+
+
+button:hover {
+    transform: translateY(-4px) scale(1.05);
+
+    box-shadow:
+        0 15px 30px rgba(190, 65, 150, 0.40);
+}
+
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================================
+   TEASING SCREEN
+========================================= */
+
+.emoji {
+    font-size: 70px;
+
+    margin-bottom: 15px;
+
+    animation: floating 2s infinite ease-in-out;
+}
+
+
+@keyframes floating {
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+
+#teaseTitle {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+
+    color: #b52d76;
+}
+
+
+#teaseText {
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+
+.clickCounter {
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   BALLOONS
+========================================= */
+
+.balloons {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.balloons span {
+    position: absolute;
+
+    font-size: 45px;
+
+    animation: balloonFloat 5s infinite ease-in-out;
+}
+
+
+.balloons span:nth-child(1) {
+    left: 5%;
+    top: 20%;
+}
+
+
+.balloons span:nth-child(2) {
+    right: 7%;
+    top: 15%;
+    animation-delay: 1s;
+}
+
+
+.balloons span:nth-child(3) {
+    left: 10%;
+    bottom: 15%;
+    animation-delay: 2s;
+}
+
+
+.balloons span:nth-child(4) {
+    right: 12%;
+    bottom: 20%;
+    animation-delay: 3s;
+}
+
+
+.balloons span:nth-child(5) {
+    left: 48%;
+    top: 5%;
+    animation-delay: 1.5s;
+}
+
+
+@keyframes balloonFloat {
+
+    50% {
+        transform: translateY(-25px) rotate(8deg);
+    }
+}
+
+
+/* =========================================
+   FINAL SURPRISE SCREEN
+========================================= */
+
+#surpriseScreen {
+    align-items: flex-start;
+
+    padding: 40px 15px;
+
+    overflow-y: auto;
+}
+
+
+.birthday-card {
+    width: min(95vw, 750px);
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 2px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 25px 80px rgba(110, 45, 100, 0.25);
+
+    animation: surpriseAppear 1.2s ease;
+
+    position: relative;
+
+    z-index: 20;
+}
+
+
+@keyframes surpriseAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
     }
 
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-    /* THIRD CLICK */
 
-    else if (clickCount === 3) {
+.final-title {
+    font-size: clamp(35px, 7vw, 55px);
 
-        teaseEmoji.innerText = "🤭";
+    margin-bottom: 25px;
+}
 
-        teaseTitle.innerText =
-            "Okayyy okayyy...";
 
-        teaseText.innerText =
-            "Promise, ab next click mein actual surprise hai 🫣💗";
+/* =========================================
+   CAKE
+========================================= */
 
-        teaseBtn.innerText =
-            "LAST ONE, I SWEAR 😭";
+.cake {
+    width: 220px;
 
+    margin: 40px auto;
+
+    position: relative;
+
+    padding-top: 70px;
+}
+
+
+.cake-top,
+.cake-middle,
+.cake-bottom {
+    height: 45px;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        #ff9fc5,
+        #ff6fa8
+    );
+
+    box-shadow:
+        inset 0 -8px rgba(180, 40, 100, 0.12);
+}
+
+
+.cake-top {
+    width: 100%;
+}
+
+
+.cake-middle {
+    width: 90%;
+
+    margin: auto;
+}
+
+
+.cake-bottom {
+    width: 80%;
+
+    margin: auto;
+}
+
+
+.cream {
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #fff4fa;
+}
+
+
+.cream1 {
+    top: 65px;
+    left: 70px;
+}
+
+
+.cream2 {
+    top: 65px;
+    right: 70px;
+}
+
+
+.cream3 {
+    top: 65px;
+    left: 95px;
+}
+
+
+.candle {
+    width: 15px;
+    height: 60px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 7px,
+        #ff6fa8 7px,
+        #ff6fa8 14px
+    );
+
+    position: absolute;
+
+    top: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 5px;
+}
+
+
+.flame {
+    position: absolute;
+
+    top: -35px;
+    left: -8px;
+
+    font-size: 25px;
+
+    animation: flame 0.7s infinite alternate;
+}
+
+
+@keyframes flame {
+
+    from {
+        transform: scale(0.9);
     }
 
-
-    /* FOURTH CLICK */
-
-    else if (clickCount === 4) {
-
-        teaseScreen.classList.remove("active");
-
-        surpriseScreen.classList.add("active");
-
-        startCelebration();
-
+    to {
+        transform: scale(1.15);
     }
+}
 
-});
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+    max-width: 620px;
+
+    margin: auto;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+.message h2 {
+    color: #c02f7a;
+
+    margin-bottom: 20px;
+
+    font-size: 28px;
+}
+
+
+.message p {
+    margin-bottom: 20px;
+}
+
+
+.ending {
+    font-size: 18px;
+
+    color: #c02f7a;
+}
+
+
+.hearts {
+    font-size: 30px;
+
+    margin: 20px;
+
+    animation: heartBeat 1.5s infinite;
+}
+
+
+@keyframes heartBeat {
+
+    50% {
+        transform: scale(1.15);
+    }
+}
 
 
 /* =========================================
    CONFETTI
 ========================================= */
 
-function createConfetti() {
+.confetti-container {
+    position: fixed;
 
-    const container =
-        document.querySelector(".confetti-container");
+    inset: 0;
 
-    const confetti = document.createElement("div");
+    pointer-events: none;
 
-    confetti.classList.add("confetti");
+    overflow: hidden;
 
-
-    const symbols = [
-        "✨",
-        "💖",
-        "🎀",
-        "⭐",
-        "💕",
-        "🌸",
-        "🎉"
-    ];
-
-    confetti.innerText =
-        symbols[Math.floor(Math.random() * symbols.length)];
+    z-index: 5;
+}
 
 
-    confetti.style.left =
-        Math.random() * 100 + "vw";
+.confetti {
+    position: absolute;
+
+    top: -30px;
+
+    animation: confettiFall linear forwards;
+}
 
 
-    confetti.style.fontSize =
-        (Math.random() * 15 + 10) + "px";
+@keyframes confettiFall {
 
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
 
-    confetti.style.animationDuration =
-        (Math.random() * 3 + 3) + "s";
-
-
-    container.appendChild(confetti);
-
-
-    setTimeout(function () {
-
-        confetti.remove();
-
-    }, 6000);
-
+        opacity: 0;
+    }
 }
 
 
@@ -166,66 +590,58 @@ function createConfetti() {
    SPARKLES
 ========================================= */
 
-function createSparkle() {
+.sparkle {
+    position: fixed;
 
-    const sparkle = document.createElement("div");
+    pointer-events: none;
 
-    sparkle.classList.add("sparkle");
+    font-size: 20px;
 
-    sparkle.innerText = "✨";
+    animation: sparkleFall 3s linear forwards;
 
-    sparkle.style.left =
-        Math.random() * 100 + "vw";
-
-    sparkle.style.fontSize =
-        (Math.random() * 15 + 10) + "px";
-
-    document.body.appendChild(sparkle);
+    z-index: 6;
+}
 
 
-    setTimeout(function () {
+@keyframes sparkleFall {
 
-        sparkle.remove();
+    from {
+        transform: translateY(-20px) scale(0);
 
-    }, 3000);
+        opacity: 1;
+    }
 
+    to {
+        transform: translateY(100vh) scale(1.5);
+
+        opacity: 0;
+    }
 }
 
 
 /* =========================================
-   START CELEBRATION
+   MOBILE
 ========================================= */
 
-function startCelebration() {
+@media (max-width: 600px) {
 
-    /* Create lots of confetti */
-
-    for (let i = 0; i < 60; i++) {
-
-        setTimeout(function () {
-
-            createConfetti();
-
-        }, i * 80);
-
+    .card {
+        padding: 40px 20px;
     }
 
+    .birthday-card {
+        padding: 35px 20px;
+    }
 
-    /* Keep confetti coming */
+    .balloons span {
+        font-size: 35px;
+    }
 
-    setInterval(function () {
+    .message {
+        font-size: 15px;
+    }
 
-        createConfetti();
-
-    }, 250);
-
-
-    /* Sparkles */
-
-    setInterval(function () {
-
-        createSparkle();
-
-    }, 300);
-
+    .cake {
+        transform: scale(0.9);
+    }
 }
