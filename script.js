@@ -2,20 +2,92 @@
    GET ELEMENTS
 ========================================= */
 
-const welcomeScreen = document.getElementById("welcomeScreen");
-const teaseScreen = document.getElementById("teaseScreen");
-const surpriseScreen = document.getElementById("surpriseScreen");
+const welcomeScreen =
+    document.getElementById("welcomeScreen");
 
-const startBtn = document.getElementById("startBtn");
-const teaseBtn = document.getElementById("teaseBtn");
+const teaseScreen =
+    document.getElementById("teaseScreen");
 
-const teaseTitle = document.getElementById("teaseTitle");
-const teaseText = document.getElementById("teaseText");
-const teaseEmoji = document.getElementById("teaseEmoji");
+const surpriseScreen =
+    document.getElementById("surpriseScreen");
 
-const counter = document.getElementById("counter");
+
+const startBtn =
+    document.getElementById("startBtn");
+
+const teaseBtn =
+    document.getElementById("teaseBtn");
+
+
+const teaseTitle =
+    document.getElementById("teaseTitle");
+
+const teaseText =
+    document.getElementById("teaseText");
+
+const teaseEmoji =
+    document.getElementById("teaseEmoji");
+
+
+const counter =
+    document.getElementById("counter");
+
+
+const music =
+    document.getElementById("birthdayMusic");
+
+
+const revealImage =
+    document.getElementById("revealImage");
+
+
+const photoCaption =
+    document.getElementById("photoCaption");
+
 
 let clickCount = 0;
+
+
+/* =========================================
+   PHOTOS
+========================================= */
+
+const photos = [
+
+    "photos/photo1.jpg",
+
+    "photos/photo2.jpg",
+
+    "photos/photo3.jpg",
+
+    "photos/photo4.jpg",
+
+    "photos/photo5.jpg",
+
+    "photos/photo6.jpg",
+
+    "photos/photo7.jpg"
+
+];
+
+
+const captions = [
+
+    "Okay... this one had to be here 🥹",
+
+    "Another little memory ✨",
+
+    "That smile though 👀❤️",
+
+    "Just a cute little moment 🎀",
+
+    "Pretty sure this one deserves a spot 💗",
+
+    "Birthday girl energy 🎂",
+
+    "And finally... this one 🩷"
+
+];
 
 
 /* =========================================
@@ -24,115 +96,261 @@ let clickCount = 0;
 
 function showScreen(screenToShow) {
 
-    // Hide all screens first
     welcomeScreen.classList.remove("active");
+
     teaseScreen.classList.remove("active");
+
     surpriseScreen.classList.remove("active");
 
-    // Show only the selected screen
+
     screenToShow.classList.add("active");
+
 }
 
 
 /* =========================================
-   LET'S GO BUTTON
+   LET'S GO
 ========================================= */
 
-startBtn.addEventListener("click", function () {
+startBtn.addEventListener(
+    "click",
+    function () {
 
-    // Move from welcome screen
-    // to teasing screen
+        showScreen(teaseScreen);
 
-    showScreen(teaseScreen);
-
-});
+    }
+);
 
 
 /* =========================================
-   TEASING BUTTON
+   TEASING
 ========================================= */
 
-teaseBtn.addEventListener("click", function () {
-
-    clickCount++;
-
-    // Update click counter
-    counter.innerText = clickCount + " / 4";
+teaseBtn.addEventListener(
+    "click",
+    function () {
 
 
-    /* -------------------------------------
-       CLICK 1
-    ------------------------------------- */
+        clickCount++;
 
-    if (clickCount === 1) {
 
-        teaseEmoji.innerText = "😏";
+        counter.innerText =
+            clickCount + " / 4";
 
-        teaseTitle.innerText =
-            "Ohooo... 👀";
 
-        teaseText.innerText =
-            "Itni jaldi surprise chahiye? Thoda wait karo madam 😂";
+        /* ==============================
+           CLICK 1
+        ============================== */
 
-        teaseBtn.innerText =
-            "Okay okay... Click again 😭";
+        if (clickCount === 1) {
+
+
+            teaseEmoji.innerText =
+                "😏";
+
+
+            teaseTitle.innerText =
+                "Ohooo... 👀";
+
+
+            teaseText.innerText =
+                "Itni jaldi surprise chahiye? Thoda wait karo madam 😂";
+
+
+            teaseBtn.innerText =
+                "Okay okay... Click again 😭";
+
+
+        }
+
+
+        /* ==============================
+           CLICK 2
+        ============================== */
+
+        else if (clickCount === 2) {
+
+
+            teaseEmoji.innerText =
+                "😂";
+
+
+            teaseTitle.innerText =
+                "Patience Ishhhhhhh!";
+
+
+            teaseText.innerText =
+                "Abhi toh surprise shuru bhi nahi hua 😭✨";
+
+
+            teaseBtn.innerText =
+                "One more time 👀";
+
+
+        }
+
+
+        /* ==============================
+           CLICK 3
+        ============================== */
+
+        else if (clickCount === 3) {
+
+
+            teaseEmoji.innerText =
+                "🤭";
+
+
+            teaseTitle.innerText =
+                "Okayyy okayyy...";
+
+
+            teaseText.innerText =
+                "Promise, ab next click mein actual surprise hai 🫣💗";
+
+
+            teaseBtn.innerText =
+                "LAST ONE, I SWEAR 😭";
+
+
+        }
+
+
+        /* ==============================
+           CLICK 4
+        ============================== */
+
+        else if (clickCount === 4) {
+
+
+            showScreen(
+                surpriseScreen
+            );
+
+
+            /* --------------------------
+               START MUSIC
+            -------------------------- */
+
+            music.volume = 0.4;
+
+
+            music.play().catch(
+                function (error) {
+
+                    console.log(
+                        "Music could not autoplay:",
+                        error
+                    );
+
+                }
+            );
+
+
+            /* --------------------------
+               START CELEBRATION
+            -------------------------- */
+
+            startCelebration();
+
+
+            /* --------------------------
+               START PHOTO SHOW
+            -------------------------- */
+
+            startPhotoReveal();
+
+        }
+
     }
+);
 
 
-    /* -------------------------------------
-       CLICK 2
-    ------------------------------------- */
+/* =========================================
+   PHOTO REVEAL
+========================================= */
 
-    else if (clickCount === 2) {
-
-        teaseEmoji.innerText = "😂";
-
-        teaseTitle.innerText =
-            "Patience Ishhhhhhh!";
-
-        teaseText.innerText =
-            "Abhi toh surprise shuru bhi nahi hua 😭✨";
-
-        teaseBtn.innerText =
-            "One more time 👀";
-    }
+function startPhotoReveal() {
 
 
-    /* -------------------------------------
-       CLICK 3
-    ------------------------------------- */
-
-    else if (clickCount === 3) {
-
-        teaseEmoji.innerText = "🤭";
-
-        teaseTitle.innerText =
-            "Okayyy okayyy...";
-
-        teaseText.innerText =
-            "Promise, ab next click mein actual surprise hai 🫣💗";
-
-        teaseBtn.innerText =
-            "LAST ONE, I SWEAR 😭";
-    }
+    let currentPhoto = 0;
 
 
-    /* -------------------------------------
-       CLICK 4 — FINAL SURPRISE
-    ------------------------------------- */
+    revealImage.src =
+        photos[currentPhoto];
 
-    else if (clickCount === 4) {
 
-        // Hide teasing screen
-        // Show final birthday screen
+    photoCaption.innerText =
+        captions[currentPhoto];
 
-        showScreen(surpriseScreen);
 
-        // Start celebration effects
-        startCelebration();
-    }
+    currentPhoto++;
 
-});
+
+    const photoInterval =
+        setInterval(
+            function () {
+
+
+                if (
+                    currentPhoto >= photos.length
+                ) {
+
+                    clearInterval(
+                        photoInterval
+                    );
+
+
+                    /* Keep final photo */
+
+                    revealImage.src =
+                        photos[photos.length - 1];
+
+
+                    photoCaption.innerText =
+                        "And this one... had to be the last one 🩷";
+
+
+                    return;
+
+                }
+
+
+                /* Fade out */
+
+                revealImage.style.opacity =
+                    "0";
+
+
+                setTimeout(
+                    function () {
+
+
+                        revealImage.src =
+                            photos[currentPhoto];
+
+
+                        photoCaption.innerText =
+                            captions[currentPhoto];
+
+
+                        revealImage.style.opacity =
+                            "1";
+
+
+                        currentPhoto++;
+
+
+                    },
+                    500
+                );
+
+
+            },
+            2200
+        );
+
+}
 
 
 /* =========================================
@@ -141,18 +359,24 @@ teaseBtn.addEventListener("click", function () {
 
 function createConfetti() {
 
+
     const container =
-        document.querySelector(".confetti-container");
+        document.getElementById(
+            "confettiContainer"
+        );
+
 
     const confetti =
         document.createElement("div");
 
-    confetti.classList.add("confetti");
 
+    confetti.classList.add(
+        "confetti"
+    );
 
-    // Different birthday decorations
 
     const symbols = [
+
         "✨",
         "💖",
         "🎀",
@@ -162,134 +386,97 @@ function createConfetti() {
         "🎉",
         "💗",
         "🩷",
-        "🥳"
+        "🥳",
+        "🎂"
+
     ];
 
 
-    // Pick random symbol
-
     confetti.innerText =
         symbols[
-            Math.floor(Math.random() * symbols.length)
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
         ];
 
-
-    // Random horizontal position
 
     confetti.style.left =
         Math.random() * 100 + "vw";
 
 
-    // Random size
-
     confetti.style.fontSize =
-        (Math.random() * 15 + 10) + "px";
+        (
+            Math.random() * 15 +
+            10
+        ) + "px";
 
-
-    // Random falling speed
 
     confetti.style.animationDuration =
-        (Math.random() * 3 + 3) + "s";
+        (
+            Math.random() * 3 +
+            3
+        ) + "s";
 
 
-    // Add to page
+    container.appendChild(
+        confetti
+    );
 
-    container.appendChild(confetti);
 
+    setTimeout(
+        function () {
 
-    // Remove after animation
+            confetti.remove();
 
-    setTimeout(function () {
+        },
+        6000
+    );
 
-        confetti.remove();
-
-    }, 6000);
 }
 
 
 /* =========================================
-   CREATE SPARKLES
-========================================= */
-
-function createSparkle() {
-
-    const sparkle =
-        document.createElement("div");
-
-    sparkle.classList.add("sparkle");
-
-
-    sparkle.innerText = "✨";
-
-
-    // Random position
-
-    sparkle.style.left =
-        Math.random() * 100 + "vw";
-
-
-    // Random size
-
-    sparkle.style.fontSize =
-        (Math.random() * 15 + 10) + "px";
-
-
-    // Add sparkle
-
-    document.body.appendChild(sparkle);
-
-
-    // Remove after animation
-
-    setTimeout(function () {
-
-        sparkle.remove();
-
-    }, 3000);
-}
-
-
-/* =========================================
-   START FINAL CELEBRATION
+   START CELEBRATION
 ========================================= */
 
 function startCelebration() {
 
 
-    /* -------------------------------------
-       INITIAL CONFETTI BURST
-    ------------------------------------- */
+    /* -------------------------------
+       BIG INITIAL BURST
+    -------------------------------- */
 
-    for (let i = 0; i < 60; i++) {
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
 
-        setTimeout(function () {
 
-            createConfetti();
+        setTimeout(
+            function () {
 
-        }, i * 80);
+                createConfetti();
+
+            },
+            i * 40
+        );
 
     }
 
 
-    /* -------------------------------------
+    /* -------------------------------
        CONTINUOUS CONFETTI
-    ------------------------------------- */
+    -------------------------------- */
 
-    setInterval(function () {
+    setInterval(
+        function () {
 
-        createConfetti();
+            createConfetti();
 
-    }, 250);
-
-
-    /* -------------------------------------
-       CONTINUOUS SPARKLES
-    ------------------------------------- */
-
-    setInterval(function () {
-
-        createSparkle();
-
-    }, 300);
+        },
+        300
+    );
 
 }
