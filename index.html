@@ -1,41 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Happy Birthday Ishhhhhhh 🎀</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- Background Decorations -->
-    <div class="stars"></div>
-    <div class="balloons">
-        <span>🎈</span>
-        <span>🎈</span>
-        <span>🎈</span>
-        <span>🎈</span>
-        <span>🎈</span>
+
+    <!-- =====================================
+         BACKGROUND DECORATIONS
+    ====================================== -->
+
+    <div class="background-hearts">
+        💗
+        💕
+        ✨
+        💖
+        🌸
+        ✨
+        💕
     </div>
 
-    <!-- FIRST SCREEN -->
-    <section id="welcomeScreen" class="screen active">
 
-        <div class="card">
+    <div class="balloons">
 
-            <div class="sparkles">✨ ✨ ✨</div>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
 
-            <h1>Happy Birthday<br>Ishhhhhhh 🎀</h1>
+    </div>
 
-            <p class="small-text">
-                Someone has a little surprise waiting for you 👀
+
+    <!-- =====================================
+         MUSIC
+    ====================================== -->
+
+    <audio id="birthdayMusic" loop>
+
+        <source
+            src="birthday-song.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =====================================
+         SCREEN 1
+    ====================================== -->
+
+    <section id="welcomeScreen"
+             class="screen active">
+
+        <div class="glass-card welcome-card">
+
+            <div class="mini-sparkles">
+                ✨ ✨ ✨
+            </div>
+
+
+            <h1>
+                Happy Birthday
+                <br>
+                Ishhhhhhh 🎀
+            </h1>
+
+
+            <p class="intro-text">
+
+                Someone has a little surprise
+                waiting for you... 👀
+
             </p>
 
-            <button id="startBtn">
+
+            <button id="startBtn"
+                    class="main-button">
+
                 Let's Go ✨
+
             </button>
 
         </div>
@@ -43,25 +98,52 @@
     </section>
 
 
-    <!-- TEASING SCREEN -->
-    <section id="teaseScreen" class="screen">
 
-        <div class="card">
+    <!-- =====================================
+         SCREEN 2 — TEASING
+    ====================================== -->
 
-            <div class="emoji" id="teaseEmoji">👀</div>
+    <section id="teaseScreen"
+             class="screen">
 
-            <h2 id="teaseTitle">Enjoy your surprise</h2>
+        <div class="glass-card tease-card">
+
+
+            <div id="teaseEmoji"
+                 class="big-emoji">
+
+                👀
+
+            </div>
+
+
+            <h2 id="teaseTitle">
+
+                Enjoy your surprise
+
+            </h2>
+
 
             <p id="teaseText">
+
                 Click the button below...
+
             </p>
 
-            <button id="teaseBtn">
+
+            <button id="teaseBtn"
+                    class="main-button">
+
                 Click Me 👀
+
             </button>
 
-            <div class="clickCounter" id="counter">
+
+            <div id="counter"
+                 class="counter">
+
                 0 / 4
+
             </div>
 
         </div>
@@ -69,88 +151,316 @@
     </section>
 
 
-    <!-- FINAL SURPRISE -->
-    <section id="surpriseScreen" class="screen">
 
-        <div class="confetti-container"></div>
+    <!-- =====================================
+         SCREEN 3 — FINAL SURPRISE
+    ====================================== -->
+
+    <section id="surpriseScreen"
+             class="screen final-screen">
+
+
+        <!-- CONFETTI -->
+
+        <div id="confettiContainer"
+             class="confetti-container">
+        </div>
+
+
+        <!-- MAIN BIRTHDAY CARD -->
 
         <div class="birthday-card">
 
+
             <div class="top-decoration">
+
                 ✨ 🎀 ✨ 🎈 ✨ 🎀 ✨
+
             </div>
+
 
             <h1 class="final-title">
-                Happy Birthday Ishhhhhhh! 🥳
+
+                Happy Birthday
+                <br>
+                Ishhhhhhh! 🥳
+
             </h1>
 
-            <!-- Cake -->
-            <div class="cake">
 
-                <div class="candle">
-                    <div class="flame">🔥</div>
+            <p class="little-line">
+
+                Okay... NOW the actual surprise begins. 🫣❤️
+
+            </p>
+
+
+
+            <!-- =================================
+                 PHOTO REVEAL
+            ================================== -->
+
+            <div id="photoReveal"
+                 class="photo-reveal">
+
+                <div class="photo-frame">
+
+                    <img id="revealImage"
+                         src="photos/photo1.jpg"
+                         alt="Birthday memory">
+
                 </div>
 
-                <div class="cake-top"></div>
-                <div class="cake-middle"></div>
-                <div class="cake-bottom"></div>
+            </div>
 
-                <div class="cream cream1"></div>
-                <div class="cream cream2"></div>
-                <div class="cream cream3"></div>
+
+            <p id="photoCaption"
+               class="photo-caption">
+
+                ✨ A little memory ✨
+
+            </p>
+
+
+
+            <!-- =================================
+                 CAKE
+            ================================== -->
+
+            <div class="cake-section">
+
+                <div class="cake">
+
+                    <div class="flame">
+                        🔥
+                    </div>
+
+                    <div class="candle">
+                    </div>
+
+                    <div class="cake-top">
+                    </div>
+
+                    <div class="cake-middle">
+                    </div>
+
+                    <div class="cake-bottom">
+                    </div>
+
+                    <div class="cream cream-one">
+                    </div>
+
+                    <div class="cream cream-two">
+                    </div>
+
+                    <div class="cream cream-three">
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="hearts">
+
+            <div class="heart-line">
+
                 💗 ✨ 💕 ✨ 💖
+
             </div>
 
-            <!-- PERSONAL MESSAGE -->
-            <div class="message">
 
-                <h2>For you, Ishhhh 💌</h2>
+
+            <!-- =================================
+                 PHOTO COLLAGE
+            ================================== -->
+
+            <div id="photoCollage"
+                 class="photo-collage">
+
+
+                <div class="polaroid p1">
+
+                    <img src="photos/photo1.jpg">
+
+                    <span>
+                        ✨
+                    </span>
+
+                </div>
+
+
+                <div class="polaroid p2">
+
+                    <img src="photos/photo2.jpg">
+
+                    <span>
+                        💗
+                    </span>
+
+                </div>
+
+
+                <div class="polaroid p3">
+
+                    <img src="photos/photo3.jpg">
+
+                    <span>
+                        🌸
+                    </span>
+
+                </div>
+
+
+                <div class="polaroid p4">
+
+                    <img src="photos/photo4.jpg">
+
+                    <span>
+                        🎀
+                    </span>
+
+                </div>
+
+
+                <div class="polaroid p5">
+
+                    <img src="photos/photo5.jpg">
+
+                    <span>
+                        💕
+                    </span>
+
+                </div>
+
+
+                <div class="polaroid p6">
+
+                    <img src="photos/photo6.jpg">
+
+                    <span>
+                        🎂
+                    </span>
+
+                </div>
+
+
+                <div class="polaroid p7">
+
+                    <img src="photos/photo7.jpg">
+
+                    <span>
+                        🩷
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 PERSONAL MESSAGE
+            ================================== -->
+
+            <div class="message-box">
+
+
+                <h2>
+
+                    For you, Ishhhh 💌
+
+                </h2>
+
 
                 <p>
+
                     Happy Birthdayyy 🫶🏻❤️
-                    I hope your day is filled with all the happiness,
-                    laughter and beautiful moments you deserve.
-                    Honestly, I'm really glad that we became friends.
-                    You're genuinely such a sweet and amazing person,
-                    and having someone like you in my life is something
-                    I really appreciate.
+
+                    I genuinely hope your day is
+                    filled with happiness, laughter,
+                    beautiful memories and all the
+                    little things that make you smile.
+
                 </p>
+
 
                 <p>
-                    I hope this new year of your life brings you
-                    countless reasons to smile, amazing memories,
-                    success in everything you do and obviously...
-                    thodi si extra bakchodi bhi 😂✨
+
+                    Honestly, I never thought that a
+                    normal friendship would turn into
+                    so many random conversations,
+                    jokes, nonsense and memories.
+
+                    But I'm genuinely really glad
+                    that we became friends.
+
                 </p>
+
 
                 <p>
-                    Bas hamesha aise hi khush rehna,
-                    apni cute si smile maintain rakhna,
-                    and never forget that you have people who
-                    genuinely care about you. ❤️
+
+                    You're genuinely such a sweet,
+                    fun and amazing person, and I
+                    hope you always stay exactly the
+                    way you are.
+
+                    Thodi pagal, thodi annoying,
+                    but mostly amazing 😂❤️
+
                 </p>
 
-                <p class="ending">
-                    Once again...<br>
-                    <strong>HAPPIEST BIRTHDAY ISHHHHHHH 🎂🎀✨</strong>
+
+                <p>
+
+                    I hope this new year of your life
+                    brings you lots of happiness,
+                    success, beautiful memories and
+                    countless reasons to smile.
+
                 </p>
+
+
+                <p>
+
+                    And whenever things get difficult,
+                    just remember that there are people
+                    who genuinely care about you and
+                    want to see you happy. ❤️
+
+                </p>
+
+
+                <p class="final-message">
+
+                    Once again...
+
+                    <br><br>
+
+                    <strong>
+                        HAPPIEST BIRTHDAY
+                        ISHHHHHHHH 🎂🎀✨
+                    </strong>
+
+                </p>
+
 
             </div>
+
 
             <div class="bottom-decoration">
+
                 🎀 ✨ 🎂 ✨ 🎀
+
             </div>
+
 
         </div>
 
     </section>
+
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
